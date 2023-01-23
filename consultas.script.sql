@@ -43,4 +43,13 @@ SELECT t.TrackId, t.Name
 FROM dbo.Track t
 WHERE t.Composer LIKE '%Mercury%'
 
+/*Listar las playlist (sin repetir ninguna) que tienen alguna canción de AC/DC*/
+SELECT DISTINCT pl.Name
+FROM dbo.Track t
+INNER JOIN dbo.PlaylistTrack pt
+    ON t.TrackId = pt.TrackId
+INNER JOIN dbo.Playlist pl
+    ON pt.PlaylistId = pl.PlaylistId
+WHERE t.Composer like '%AC/DC%'
+
 
