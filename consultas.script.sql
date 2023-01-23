@@ -27,6 +27,13 @@ SELECT AVG (t.Milliseconds)
 FROM dbo.Track t
 
 /*Listar las pistas de la playlist 'Heavy Metal Classic*/
+SELECT *
+FROM dbo.Track t
+INNER JOIN dbo.PlaylistTrack pt
+    ON t.TrackId = pt.TrackId
+INNER JOIN dbo.Playlist pl
+    ON pt.PlaylistId = pl.PlaylistId
+where pl.Name = 'Heavy Metal Classic'
 
 
 /*Listar las pistas que uno de sus compositores (columna Composer) sea Mercury*/
