@@ -4,9 +4,12 @@ FROM dbo.Track t
 WHERE t.UnitPrice >= 1.00
 
 /*Listar las pistas de más de 4 minutos de duración*/
+SELECT t.TrackId, t.Name, t.Milliseconds
+FROM dbo.Track t
+WHERE t.Milliseconds > 240000
 
 /*Listar las pistas que tengan entre 2 y 3 minutos de duración*/
-SELECT t.TrackId, t.Name
+SELECT t.TrackId, t.Name, t.Milliseconds
 FROM dbo.Track t
 WHERE t.Milliseconds BETWEEN 120000 AND 180000;
 
@@ -34,7 +37,6 @@ INNER JOIN dbo.PlaylistTrack pt
 INNER JOIN dbo.Playlist pl
     ON pt.PlaylistId = pl.PlaylistId
 WHERE pl.Name = 'Heavy Metal Classic'
-
 
 /*Listar las pistas que uno de sus compositores (columna Composer) sea Mercury*/
 SELECT t.TrackId, t.Name
