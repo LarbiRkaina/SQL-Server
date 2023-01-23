@@ -33,7 +33,7 @@ INNER JOIN dbo.PlaylistTrack pt
     ON t.TrackId = pt.TrackId
 INNER JOIN dbo.Playlist pl
     ON pt.PlaylistId = pl.PlaylistId
-where pl.Name = 'Heavy Metal Classic'
+WHERE pl.Name = 'Heavy Metal Classic'
 
 
 /*Listar las pistas que uno de sus compositores (columna Composer) sea Mercury*/
