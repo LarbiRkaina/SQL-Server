@@ -60,3 +60,10 @@ FROM dbo.PlaylistTrack pt
 INNER JOIN dbo.Playlist pl
     ON pt.PlaylistId = pl.PlaylistId
 GROUP BY pl.Name
+
+/*Listar los artistas que no tienen album*/
+SELECT ar.Name, ar.ArtistId
+FROM dbo.Artist ar
+LEFT JOIN dbo.Album al
+    ON ar.ArtistId = al.ArtistId
+WHERE al.ArtistId is NULL
