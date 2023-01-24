@@ -13,12 +13,14 @@ SELECT t.TrackId, t.Name, t.Milliseconds
 FROM dbo.Track t
 WHERE t.Milliseconds BETWEEN 120000 AND 180000;
 
-/*Listar todas las pistas del artista 'Queen' (Artist.Name = 'Queen')- Revisar*/
-SELECT a.AlbumId, a.Title, t.Name
-FROM dbo.Album a
-INNER JOIN dbo.Artist t
-ON a.ArtistId = t.ArtistId
-WHERE t.Name ='Queen'
+/*Listar todas las pistas del artista 'Queen' (Artist.Name = 'Queen')*/
+SELECT tr.TrackId, tr.Name, tr.GenreId
+FROM dbo.Track tr
+INNER JOIN dbo.Album al
+    ON tr.AlbumId = al.AlbumId
+INNER JOIN  dbo.Artist ar
+    ON al.ArtistId = ar.ArtistId
+WHERE ar.Name ='Queen'
 
 /*Listar los clientes (tabla Customer) de USA, Canada y Brazil*/
 SELECT c.FirstName, c.LastName, c.Country
