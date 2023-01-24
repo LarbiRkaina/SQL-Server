@@ -52,4 +52,9 @@ INNER JOIN dbo.Playlist pl
     ON pt.PlaylistId = pl.PlaylistId
 WHERE t.Composer like '%AC/DC%'
 
-
+/*Listar las playlist junto con el número de pistas que contienen*/
+SELECT COUNT(pl.PlaylistId) as Recuento, pl.Name
+FROM dbo.PlaylistTrack pt
+INNER JOIN dbo.Playlist pl
+    ON pt.PlaylistId = pl.PlaylistId
+GROUP BY pl.Name
