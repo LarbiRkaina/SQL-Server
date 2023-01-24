@@ -66,4 +66,11 @@ SELECT ar.Name, ar.ArtistId
 FROM dbo.Artist ar
 LEFT JOIN dbo.Album al
     ON ar.ArtistId = al.ArtistId
-WHERE al.ArtistId is NULL
+WHERE al.AlbumId is NULL
+
+/*Listar los artistas con el número de albums que tienen*/
+SELECT COUNT(al.AlbumId) AS Recuento , ar.Name
+FROM dbo.Artist ar
+LEFT JOIN dbo.Album al
+ON ar.ArtistId = al.ArtistId
+GROUP BY ar.Name
