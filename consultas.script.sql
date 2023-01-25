@@ -97,3 +97,12 @@ INNER JOIN dbo.Artist a
     ON al.ArtistId = a.ArtistId
 WHERE a.Name = 'Queen'
 GROUP BY pl.Name
+
+/*Listar las pistas del artista 'Queen' en las que haya participado como compositor David Bowie*/
+SELECT tr.TrackId, tr.Name, tr.Composer, ar.Name
+FROM dbo.Track tr
+INNER JOIN dbo.Album al
+    ON tr.AlbumId = al.AlbumId
+INNER JOIN dbo.Artist ar
+    ON al.ArtistId = AR.ArtistId
+WHERE ar.Name = 'Queen' AND tr.Composer like '%David Bowie%'
