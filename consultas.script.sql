@@ -83,3 +83,17 @@ LEFT JOIN dbo.PlaylistTrack pl
 LEFT JOIN  dbo.Playlist p
     ON pl.PlaylistId = p.PlaylistId
 WHERE p.PlaylistId is NULL
+
+/*Listar las playlist que tienen alguna canción del artista Queen, junto con la cantidad que tienen*/
+SELECT COUNT(pl.PlaylistId) as Cantidad, pl.Name
+FROM dbo.Playlist pl
+INNER JOIN dbo.PlaylistTrack pt
+    ON pl.PlaylistId = pt.PlaylistId
+INNER JOIN dbo.Track tr
+    ON pt.TrackId = tr.TrackId
+INNER JOIN dbo.Album al
+    ON tr.AlbumId = al.AlbumId
+INNER JOIN dbo.Artist a
+    ON al.ArtistId = a.ArtistId
+WHERE a.Name = 'Queen'
+GROUP BY pl.Name
