@@ -74,3 +74,12 @@ FROM dbo.Artist ar
 LEFT JOIN dbo.Album al
 ON ar.ArtistId = al.ArtistId
 GROUP BY ar.Name
+
+/*Listar las pistas que no están en ninguna playlist*/
+SELECT tr.Name, tr.TrackId
+FROM dbo.Track tr
+LEFT JOIN dbo.PlaylistTrack pl
+    ON tr.TrackId = pl.TrackId
+LEFT JOIN  dbo.Playlist p
+    ON pl.PlaylistId = p.PlaylistId
+WHERE p.PlaylistId is NULL
